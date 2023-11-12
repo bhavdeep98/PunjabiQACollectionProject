@@ -197,7 +197,7 @@ class QuestionGenerator():
         self.qg_model.eval()
         encoded_input = self._encode_qg_input(qg_input)
         with torch.no_grad():
-            output = self.qg_model.generate(input_ids=encoded_input['input_ids'])
+            output = self.qg_model.generate(input_ids=encoded_input['input_ids'], max_new_tokens=200)
         return self.qg_tokenizer.decode(output[0])
 
     def _encode_qg_input(self, qg_input):
